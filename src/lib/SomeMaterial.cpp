@@ -28,7 +28,10 @@
 
 #include "SomeMaterial.h"
 
-#define PI 3.14 /// \fixme So rude!
+#include "iostream"
+
+#include <Eigen/Core>
+#include <Eigen/Geometry> 
 
 namespace NanoMagnetic
 {
@@ -39,8 +42,16 @@ SomeMaterial::SomeMaterial()
     , mRadius(1)
     , mDiametr(mRadius*2)
     , mHk(2 * mK1 / mMs)
-    , mVolume(4 * PI * mRadius * mRadius * mRadius / 3)
+    , mVolume(4 * M_PI * mRadius * mRadius * mRadius / 3)
 {
+    Eigen::Matrix3f mat1;
+    mat1 << 1, 2, 3,
+            4, 5, 6,
+            7, 8, 9;
+
+    auto mat2 = mat1.transpose();
+
+    std::cout << "mat2: " << std::endl << mat2 << std::endl;
 }
 
 double SomeMaterial::K1() const {
