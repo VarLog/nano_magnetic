@@ -1,3 +1,6 @@
+#ifndef _NANOMAGNETIC_INCLUDE_EXCEPTIONS_H_
+#define _NANOMAGNETIC_INCLUDE_EXCEPTIONS_H_
+
 //
 // The MIT License (MIT)
 //
@@ -21,59 +24,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  main.cpp
+//  Exceptions.h
 //
-//  Created by Maxim Fedorenko <varlllog@gmail.com> on 08/Sep/2015.
+//  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
-#include <iostream>
+#include <string>
+#include <exception>
 
-#include <getopt.h>
-#include <stdlib.h>
+#define NOT_IMPLEMENTED_EXCEPTION \
+    throw NotImplementedException(std::string(__FILE__) + ":" + std::to_string(__LINE__) + ": ")
 
-#include "NanoConfig.h"
-#include "Calculator.h"
 
-void usage( const char *execName )
-{
-    std::cout << "Nano magnetic tool. Version " << NANO_VERSION_MAJOR << "."
-              << NANO_VERSION_MINOR << "." << std::endl;
-    std::cout << "Usage:" << std::endl;
-    std::cout << "\t" << execName << " [-h]" << std::endl;
-    std::cout << "Where:" << std::endl;
-    std::cout << " -h                " << "Show this help." << std::endl;
-}
-
-int main( int argc, char *argv[] )
-{
-    char c;
-
-    while( ( c = getopt( argc, argv, "h" ) ) != -1 )
-    {
-        switch ( c )
-        {
-            case 'h':
-            {
-                usage( argv[0] );
-                return EXIT_SUCCESS;
-                break;
-            }
-
-            default:
-            {
-                usage( argv[0] );
-                return EXIT_FAILURE;
-                break;
-            }
-        }
-    }
-
-    int res = EXIT_SUCCESS;
-
-    NanoMagnetic::Calculator calculator;
-
-    calculator.calculate();
+namespace NanoMagnetic {
     
-    return res;
+class Exception : public std::runtime_error {
+public:
+    Exception( const std::string &reason )
+        : runtime_error( reason.c_str() )
+    {
+    }
+};
+
+class NotImplementedException : public Exception {
+public:
+    NotImplementedException()
+        : Exception( "Not implemented yet!" )
+    {
+    }
+    
+    NotImplementedException( const std::string &reason )
+        : Exception( "Not implemented yet! " + reason )
+    {
+    }
+};
+
+
 }
+
+#endif // _NANOMAGNETIC_INCLUDE_EXCEPTIONS_H_
 

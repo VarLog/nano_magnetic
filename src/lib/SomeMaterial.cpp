@@ -33,16 +33,18 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 
+#include "Exceptions.h"
+
 namespace NanoMagnetic {
 
 SomeMaterial::SomeMaterial()
     : mK1( 0.1 )
     , mMs( 0.1 )
-    , mRadius( 1 )
-    , mDiametr( mRadius * 2 )
     , mHk( 2 * mK1 / mMs )
-    , mVolume( 4 * M_PI * mRadius * mRadius * mRadius / 3 )
+    , mRadius( 1 )
 {
+    NOT_IMPLEMENTED_EXCEPTION;
+    
     Eigen::Matrix3f mat1;
     mat1 << 1, 2, 3,
          4, 5, 6,
@@ -71,16 +73,6 @@ double SomeMaterial::Hk() const
 double SomeMaterial::Radius() const
 {
     return mRadius;
-}
-
-double SomeMaterial::Diametr() const
-{
-    return mDiametr;
-}
-
-double SomeMaterial::Volume() const
-{
-    return mVolume;
 }
 
 }

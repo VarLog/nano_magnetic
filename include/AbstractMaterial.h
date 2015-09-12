@@ -36,9 +36,7 @@ public:
     virtual double K1() const = 0;
     virtual double Ms() const = 0;
     virtual double Hk() const = 0;
-    virtual double Diametr() const = 0;
     virtual double Radius() const = 0;
-    virtual double Volume() const = 0;
 
 protected:
     virtual ~AbstractMaterial() {};

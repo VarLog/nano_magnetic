@@ -38,19 +38,15 @@ public:
     virtual double K1() const override;
     virtual double Ms() const override;
     virtual double Hk() const override;
-    virtual double Diametr() const override;
     virtual double Radius() const override;
-    virtual double Volume() const override;
 
     SomeMaterial();
 
 private:
     double mK1;
     double mMs;
-    double mRadius;
-    double mDiametr;
     double mHk;
-    double mVolume;
+    double mRadius;
 };
 
 }
