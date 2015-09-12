@@ -28,6 +28,11 @@
 
 #include "Calculator.h"
 
+#include <iostream>
+
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
 #include "Exceptions.h"
 
 namespace NanoMagnetic {
@@ -43,6 +48,17 @@ Calculator::Calculator( const MaterialPtr &material, const MagneticFieldPtr &mag
 void Calculator::calculate( const CalculateOptions &options )
 {
     NOT_IMPLEMENTED_EXCEPTION;
+    
+    // Eigen3 example
+    
+    Eigen::Matrix3f mat1;
+    mat1 << 1, 2, 3,
+    4, 5, 6,
+    7, 8, 9;
+    
+    auto mat2 = mat1.transpose();
+    
+    std::cout << "mat2: " << std::endl << mat2 << std::endl;
 }
 
 }

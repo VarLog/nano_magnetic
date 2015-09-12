@@ -28,54 +28,38 @@
 
 #include "CommonMaterial.h"
 
-#include "iostream"
-
-#include <Eigen/Core>
-#include <Eigen/Geometry>
-
 #include "Exceptions.h"
 
 namespace NanoMagnetic {
 
-CommonMaterial::CommonMaterial()
-    : mK1( 0.1 )
-    , mMs( 0.1 )
-    , mHk( 2 * mK1 / mMs )
-    , mRadius( 1 )
+CommonMaterial::CommonMaterial( const double &k1, const double &ms, const double &radius )
+    : mK1( k1 )
+    , mMs( ms )
+    , mKH( 2 * mK1 / mMs )
+    , mRadius( radius )
 {
-    NOT_IMPLEMENTED_EXCEPTION;
-    
-    Eigen::Matrix3f mat1;
-    mat1 << 1, 2, 3,
-         4, 5, 6,
-         7, 8, 9;
-
-    auto mat2 = mat1.transpose();
-
-    std::cout << "mat2: " << std::endl << mat2 << std::endl;
 }
 
 CommonMaterial::~CommonMaterial()
 {
-    NOT_IMPLEMENTED_EXCEPTION;
 }
 
-double CommonMaterial::K1() const
+double CommonMaterial::k1() const
 {
     return mK1;
 }
 
-double CommonMaterial::Ms() const
+double CommonMaterial::ms() const
 {
     return mMs;
 }
 
-double CommonMaterial::Hk() const
+double CommonMaterial::kH() const
 {
-    return mHk;
+    return mKH;
 }
 
-double CommonMaterial::Radius() const
+double CommonMaterial::radius() const
 {
     return mRadius;
 }

@@ -33,10 +33,10 @@ namespace NanoMagnetic {
 
 class AbstractMaterial {
 public:
-    virtual double K1() const = 0;
-    virtual double Ms() const = 0;
-    virtual double Hk() const = 0;
-    virtual double Radius() const = 0;
+    virtual double k1() const = 0;
+    virtual double ms() const = 0;
+    virtual double kH() const = 0;
+    virtual double radius() const = 0;
 
 protected:
     virtual ~AbstractMaterial() {};
