@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 2.8)
 
 project("nano_magnetic" CXX)
 
@@ -21,8 +21,13 @@ if(MSVC)
     endif()
 elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Update if necessary
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11")
 endif()
+
+# Root directory
+set(NANO_ROOT_DIR ${PROJECT_SOURCE_DIR})
+
+set(CMAKE_MODULE_PATH ${NANO_ROOT_DIR}/cmake)
 
 # Eigen3: A C++ template library for linear algebra: vectors, matrices, and related algorithms.
 set(EIGEN3_MINIMUM_VERSION 3.1.2)
@@ -33,9 +38,6 @@ else()
     message(SEND_ERROR "Failed to find Eigen ${EIGEN3_MINIMUM_VERSION}")
     return()
 endif()
-
-# Root directory
-set(NANO_ROOT_DIR ${PROJECT_SOURCE_DIR})
 
 # configure a header file to pass some of the CMake settings
 # to the source code
