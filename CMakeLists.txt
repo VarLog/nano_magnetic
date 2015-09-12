@@ -75,8 +75,6 @@ target_link_libraries(${PROJECT_NAME}
                       ${NANO_SHARED_LIBRARY}
                       )
 
-# Unit tests by Google Testing Framework
-#include_directories("${NANO_SHARED_LIBRARY}/thirdparty/gtest/include")
-#add_subdirectory("${NANO_SHARED_LIBRARY}/thirdparty/gtest/src/gtest/")
-#add_subdirectory("${NANO_SHARED_LIBRARY}/tests")
+# Unit tests
+add_subdirectory("${NANO_ROOT_DIR}/test")
 
