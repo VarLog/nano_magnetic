@@ -32,12 +32,15 @@
 
 namespace NanoMagnetic {
 
-Calculator::Calculator()
+Calculator::Calculator( const MaterialPtr &material, const MagneticFieldPtr &magnetic, const SpaceAreaPtr &spaceArea )
+    : mMaterial(material)
+    , mMagneticField(magnetic)
+    , mSpaceArea(spaceArea)
 {
     NOT_IMPLEMENTED_EXCEPTION;
 }
     
-void Calculator::calculate()
+void Calculator::calculate( const CalculateOptions &options )
 {
     NOT_IMPLEMENTED_EXCEPTION;
 }

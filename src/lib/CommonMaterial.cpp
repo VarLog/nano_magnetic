@@ -21,12 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  SomeMaterial.cpp
+//  CommonMaterial.cpp
 //
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 08/Sep/2015.
 //
 
-#include "SomeMaterial.h"
+#include "CommonMaterial.h"
 
 #include "iostream"
 
@@ -37,7 +37,7 @@
 
 namespace NanoMagnetic {
 
-SomeMaterial::SomeMaterial()
+CommonMaterial::CommonMaterial()
     : mK1( 0.1 )
     , mMs( 0.1 )
     , mHk( 2 * mK1 / mMs )
@@ -55,22 +55,27 @@ SomeMaterial::SomeMaterial()
     std::cout << "mat2: " << std::endl << mat2 << std::endl;
 }
 
-double SomeMaterial::K1() const
+CommonMaterial::~CommonMaterial()
+{
+    NOT_IMPLEMENTED_EXCEPTION;
+}
+
+double CommonMaterial::K1() const
 {
     return mK1;
 }
 
-double SomeMaterial::Ms() const
+double CommonMaterial::Ms() const
 {
     return mMs;
 }
 
-double SomeMaterial::Hk() const
+double CommonMaterial::Hk() const
 {
     return mHk;
 }
 
-double SomeMaterial::Radius() const
+double CommonMaterial::Radius() const
 {
     return mRadius;
 }

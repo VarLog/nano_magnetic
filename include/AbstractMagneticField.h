@@ -1,5 +1,5 @@
-#ifndef _NANOMAGNETIC_INCLUDE_MAGNETICFIELD_H_
-#define _NANOMAGNETIC_INCLUDE_MAGNETICFIELD_H_
+#ifndef _NANOMAGNETIC_INCLUDE_ABSTRACTMAGNETICFIELD_H_
+#define _NANOMAGNETIC_INCLUDE_ABSTRACTMAGNETICFIELD_H_
 
 //
 // The MIT License (MIT)
@@ -24,20 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  MagneticField.h
+//  AbstractMagneticField.h
 //
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
 namespace NanoMagnetic {
 
-class MagneticField {
-public:
-    MagneticField();
+class AbstractMagneticField {
 
+protected:
+    virtual ~AbstractMagneticField() {};
 };
 
 }
 
-#endif // _NANOMAGNETIC_INCLUDE_MAGNETICFIELD_H_
+#endif // _NANOMAGNETIC_INCLUDE_ABSTRACTMAGNETICFIELD_H_
 

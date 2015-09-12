@@ -33,7 +33,7 @@
 
 namespace NanoMagnetic {
 
-class Sphere : AbstractSpaceArea {
+class Sphere : public AbstractSpaceArea {
 public:
     Sphere();
     virtual ~Sphere();

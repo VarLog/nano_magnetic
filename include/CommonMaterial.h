@@ -1,5 +1,5 @@
-#ifndef _NANOMAGNETIC_INCLUDE_CALCULATOR_H_
-#define _NANOMAGNETIC_INCLUDE_CALCULATOR_H_
+#ifndef _NANOMAGNETIC_INCLUDE_COMMONMATERIAL_H_
+#define _NANOMAGNETIC_INCLUDE_COMMONMATERIAL_H_
 
 //
 // The MIT License (MIT)
@@ -24,40 +24,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  Calculator.h
+//  CommonMaterial.h
 //
-//  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
+//  Created by Maxim Fedorenko <varlllog@gmail.com> on 08/Sep/2015.
 //
-
-#include <memory>
 
 #include "AbstractMaterial.h"
-#include "AbstractMagneticField.h"
-#include "AbstractSpaceArea.h"
 
 namespace NanoMagnetic {
 
-class Calculator {
+class CommonMaterial : public AbstractMaterial {
 public:
-    typedef std::shared_ptr<AbstractMaterial> MaterialPtr;
-    typedef std::shared_ptr<AbstractMagneticField> MagneticFieldPtr;
-    typedef std::shared_ptr<AbstractSpaceArea> SpaceAreaPtr;
-    
-    struct CalculateOptions {
-        unsigned int particlesCount;
-    };
-    
-    Calculator( const MaterialPtr &material, const MagneticFieldPtr &magnetic, const SpaceAreaPtr &spaceArea );
-    
-    void calculate( const CalculateOptions &options );
-    
+    virtual double K1() const override;
+    virtual double Ms() const override;
+    virtual double Hk() const override;
+    virtual double Radius() const override;
+
+    CommonMaterial();
+    virtual ~CommonMaterial();
+
 private:
-    MaterialPtr mMaterial;
-    MagneticFieldPtr mMagneticField;
-    SpaceAreaPtr mSpaceArea;    
+    double mK1;
+    double mMs;
+    double mHk;
+    double mRadius;
 };
 
 }
 
-#endif // _NANOMAGNETIC_INCLUDE_CALCULATOR_H_
+#endif // _NANOMAGNETIC_INCLUDE_COMMONMATERIAL_H_
 

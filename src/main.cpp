@@ -27,12 +27,17 @@
 //
 
 #include <iostream>
+#include <memory>
 
 #include <getopt.h>
 #include <stdlib.h>
 
 #include "NanoConfig.h"
+
 #include "Calculator.h"
+#include "CommonMaterial.h"
+#include "CommonMagneticField.h"
+#include "Sphere.h"
 
 void usage( const char *execName )
 {
@@ -70,9 +75,14 @@ int main( int argc, char *argv[] )
 
     int res = EXIT_SUCCESS;
 
-    NanoMagnetic::Calculator calculator;
+    auto material = std::make_shared<NanoMagnetic::CommonMaterial>();
+    auto magnetic = std::make_shared<NanoMagnetic::CommonMagneticField>();
+    auto sphere = std::make_shared<NanoMagnetic::Sphere>();
+    
+    NanoMagnetic::Calculator calculator(material, magnetic, sphere);
 
-    calculator.calculate();
+    NanoMagnetic::Calculator::CalculateOptions options;
+    calculator.calculate(options);
     
     return res;
 }

@@ -21,21 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  MagneticField.cpp
+//  CommonMagneticField.cpp
 //
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
-#include "MagneticField.h"
+#include "CommonMagneticField.h"
 
 #include "Exceptions.h"
 
 namespace NanoMagnetic {
     
-MagneticField::MagneticField()
+CommonMagneticField::CommonMagneticField()
 {
     NOT_IMPLEMENTED_EXCEPTION;
 }
     
+CommonMagneticField::~CommonMagneticField()
+{
+    NOT_IMPLEMENTED_EXCEPTION;
+}
+
 }
 

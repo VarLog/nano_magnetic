@@ -1,5 +1,5 @@
-#ifndef _NANOMAGNETIC_INCLUDE_SOMEMATERIAL_H_
-#define _NANOMAGNETIC_INCLUDE_SOMEMATERIAL_H_
+#ifndef _NANOMAGNETIC_INCLUDE_COMMONMAGNETICFIELD_H_
+#define _NANOMAGNETIC_INCLUDE_COMMONMAGNETICFIELD_H_
 
 //
 // The MIT License (MIT)
@@ -24,32 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  SomeMaterial.h
+//  CommonMagneticField.h
 //
-//  Created by Maxim Fedorenko <varlllog@gmail.com> on 08/Sep/2015.
+//  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
-#include "AbstractMaterial.h"
+#include "AbstractMagneticField.h"
 
 namespace NanoMagnetic {
 
-class SomeMaterial : public AbstractMaterial {
+class CommonMagneticField : public AbstractMagneticField {
 public:
-    virtual double K1() const override;
-    virtual double Ms() const override;
-    virtual double Hk() const override;
-    virtual double Radius() const override;
-
-    SomeMaterial();
-
-private:
-    double mK1;
-    double mMs;
-    double mHk;
-    double mRadius;
+    CommonMagneticField();
+    virtual ~CommonMagneticField();
 };
 
 }
 
-#endif // _NANOMAGNETIC_INCLUDE_SOMEMATERIAL_H_
+#endif // _NANOMAGNETIC_INCLUDE_COMMONMAGNETICFIELD_H_
 

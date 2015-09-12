@@ -36,6 +36,11 @@ Sphere::Sphere()
 {
     NOT_IMPLEMENTED_EXCEPTION;
 }
-    
+
+Sphere::~Sphere()
+{
+    NOT_IMPLEMENTED_EXCEPTION;
+}
+
 }
 
