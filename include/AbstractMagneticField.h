@@ -32,6 +32,11 @@
 namespace NanoMagnetic {
 
 class AbstractMagneticField {
+public:
+    virtual double stc() const = 0;
+    virtual double kStab() const = 0;
+    virtual double kappa() const = 0;
+    virtual double epsillon() const = 0;
 
 protected:
     virtual ~AbstractMagneticField() {};

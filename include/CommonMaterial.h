@@ -35,7 +35,7 @@ namespace NanoMagnetic {
 
 class CommonMaterial : public AbstractMaterial {
 public:
-    CommonMaterial( const double &k1, const double &ms, const double &radius );
+    CommonMaterial();
     virtual ~CommonMaterial();
 
     virtual double k1() const override;

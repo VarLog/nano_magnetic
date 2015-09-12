@@ -37,6 +37,17 @@ class CommonMagneticField : public AbstractMagneticField {
 public:
     CommonMagneticField();
     virtual ~CommonMagneticField();
+    
+    virtual double stc() const override;
+    virtual double kStab() const override;
+    virtual double kappa() const override;
+    virtual double epsillon() const override;
+    
+private:
+    double mStc;
+    double mKStab;
+    double mKappa;
+    double mEpsillon;
 };
 
 }

@@ -33,13 +33,35 @@
 namespace NanoMagnetic {
     
 CommonMagneticField::CommonMagneticField()
+    : mStc( 30 )
+    , mKStab( 30 )
+    , mKappa( 0.2 )
+    , mEpsillon( 1e-12 ) /// \fixme move it to Calculator::CalculateOptions
 {
-    NOT_IMPLEMENTED_EXCEPTION;
 }
     
 CommonMagneticField::~CommonMagneticField()
 {
-    NOT_IMPLEMENTED_EXCEPTION;
+}
+    
+double CommonMagneticField::stc() const
+{
+    return mStc;
+}
+    
+double CommonMagneticField::kStab() const
+{
+    return mKStab;
+}
+    
+double CommonMagneticField::kappa() const
+{
+    return mKappa;
+}
+    
+double CommonMagneticField::epsillon() const
+{
+    return mEpsillon;
 }
 
 }

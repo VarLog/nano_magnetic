@@ -32,11 +32,11 @@
 
 namespace NanoMagnetic {
 
-CommonMaterial::CommonMaterial( const double &k1, const double &ms, const double &radius )
-    : mK1( k1 )
-    , mMs( ms )
+CommonMaterial::CommonMaterial()
+    : mK1( 40000 )
+    , mMs( 500 )
     , mKH( 2 * mK1 / mMs )
-    , mRadius( radius )
+    , mRadius( 20e-7 )
 {
 }
 

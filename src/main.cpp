@@ -79,10 +79,10 @@ int main( int argc, char *argv[] )
     auto magnetic = std::make_shared<NanoMagnetic::CommonMagneticField>();
     auto sphere = std::make_shared<NanoMagnetic::Sphere>();
     
-    NanoMagnetic::Calculator calculator(material, magnetic, sphere);
+    NanoMagnetic::Calculator calculator( material, magnetic, sphere );
 
     NanoMagnetic::Calculator::CalculateOptions options;
-    calculator.calculate(options);
+    calculator.calculate( options );
     
     return res;
 }
