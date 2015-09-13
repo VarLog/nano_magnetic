@@ -29,6 +29,8 @@
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
+#include <memory>
+
 namespace NanoMagnetic {
 
 class AbstractSpaceArea {
@@ -36,6 +38,8 @@ class AbstractSpaceArea {
 protected:
     virtual ~AbstractSpaceArea() {};
 };
+
+typedef std::shared_ptr<AbstractSpaceArea> SpaceAreaPtr;
 
 }
 

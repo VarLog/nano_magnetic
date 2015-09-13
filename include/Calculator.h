@@ -29,8 +29,6 @@
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
-#include <memory>
-
 #include "AbstractMaterial.h"
 #include "AbstractMagneticField.h"
 #include "AbstractSpaceArea.h"
@@ -38,11 +36,7 @@
 namespace NanoMagnetic {
 
 class Calculator {
-public:
-    typedef std::shared_ptr<AbstractMaterial> MaterialPtr;
-    typedef std::shared_ptr<AbstractMagneticField> MagneticFieldPtr;
-    typedef std::shared_ptr<AbstractSpaceArea> SpaceAreaPtr;
-    
+public:    
     struct CalculateOptions {
         unsigned int particlesCount;
     };

@@ -29,6 +29,8 @@
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 08/Sep/2015.
 //
 
+#include <memory>
+
 namespace NanoMagnetic {
 
 class AbstractMaterial {
@@ -41,6 +43,8 @@ public:
 protected:
     virtual ~AbstractMaterial() {};
 };
+    
+typedef std::shared_ptr<AbstractMaterial> MaterialPtr;
 
 }
 

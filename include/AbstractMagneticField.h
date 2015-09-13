@@ -29,6 +29,8 @@
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
+#include <memory>
+
 namespace NanoMagnetic {
 
 class AbstractMagneticField {
@@ -41,6 +43,8 @@ public:
 protected:
     virtual ~AbstractMagneticField() {};
 };
+    
+typedef std::shared_ptr<AbstractMagneticField> MagneticFieldPtr;
 
 }
 
