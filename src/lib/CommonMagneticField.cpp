@@ -64,5 +64,15 @@ double CommonMagneticField::epsillon() const
     return mEpsillon;
 }
 
+Vector CommonMagneticField::magnetic() const
+{
+    return mMagnetic;
+}
+
+void CommonMagneticField::setMagnetic( const Vector &magnetic )
+{
+    mMagnetic = magnetic;
+}
+
 }
 

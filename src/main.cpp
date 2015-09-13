@@ -76,7 +76,12 @@ int main( int argc, char *argv[] )
     int res = EXIT_SUCCESS;
 
     auto material = std::make_shared<NanoMagnetic::CommonMaterial>();
+    
     auto magnetic = std::make_shared<NanoMagnetic::CommonMagneticField>();
+    NanoMagnetic::Vector m;
+    m.fill(1.0/sqrt(3.0));
+    magnetic->setMagnetic(m);
+    
     auto sphere = std::make_shared<NanoMagnetic::Sphere>();
     
     NanoMagnetic::Calculator calculator( material, magnetic, sphere );

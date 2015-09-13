@@ -42,12 +42,16 @@ public:
     virtual double kStab() const override;
     virtual double kappa() const override;
     virtual double epsillon() const override;
+    virtual Vector magnetic() const override;
     
+    void setMagnetic( const Vector &magnetic );
+
 private:
     double mStc;
     double mKStab;
     double mKappa;
     double mEpsillon;
+    Vector mMagnetic;
 };
 
 }

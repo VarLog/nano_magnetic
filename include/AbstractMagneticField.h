@@ -31,6 +31,8 @@
 
 #include <memory>
 
+#include "Defs.h"
+
 namespace NanoMagnetic {
 
 class AbstractMagneticField {
@@ -40,6 +42,8 @@ public:
     virtual double kappa() const = 0;
     virtual double epsillon() const = 0;
 
+    virtual Vector magnetic() const = 0;
+    
 protected:
     virtual ~AbstractMagneticField() {};
 };
