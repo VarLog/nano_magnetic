@@ -29,11 +29,38 @@
 //  Created by Maxim Fedorenko <varlllog@gmail.com> on 13/Sep/2015.
 //
 
+#include "AbstractMaterial.h"
+#include "Defs.h"
+
 namespace NanoMagnetic {
 
 class Particle {
 public:
-    Particle();
+    Particle( const MaterialPtr &material );
+    
+    void genRandNormalVector();
+    
+    bool isIntersected( const Particle &that ) const;
+    
+    MaterialPtr material() const;
+    
+    Vector position() const;
+    Vector magnetic() const;
+    Vector normal() const;
+    Vector hr() const;
+    
+    void setPosition(const Vector &pos);
+    void setMagnetic(const Vector &magnetic);
+    void setNormal(const Vector &normal);
+    void setHr(const Vector &hr);
+    
+private:
+    Vector mPosition;
+    Vector mMagnetic;
+    Vector mNornal;
+    Vector mHr;
+    
+    MaterialPtr mMaterial;
 };
 
 }

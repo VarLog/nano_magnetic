@@ -28,13 +28,81 @@
 
 #include "Particle.h"
 
+#include <random>
+
 #include "Exceptions.h"
 
 namespace NanoMagnetic {
 
-Particle::Particle()
+Particle::Particle( const MaterialPtr &material )
+    : mMaterial(material)
 {
-    NOT_IMPLEMENTED_EXCEPTION;
+}
+    
+void Particle::genRandNormalVector()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(-0.5, 0.5);
+    
+    mNornal(0) = dis(gen);
+    mNornal(1) = dis(gen);
+    mNornal(2) = dis(gen);
+    
+    mNornal /= mNornal.squaredNorm();
+}
+
+bool Particle::isIntersected( const Particle &that ) const
+{
+    auto diff = mPosition - that.mPosition;
+    auto dist = diff.squaredNorm();
+    
+    return dist < ( mMaterial->radius() + that.mMaterial->radius() );
+}
+
+MaterialPtr Particle::material() const
+{
+    return mMaterial;
+}
+
+Vector Particle::position() const
+{
+    return mPosition;
+}
+
+Vector Particle::magnetic() const
+{
+    return mMagnetic;
+}
+
+Vector Particle::normal() const
+{
+    return mNornal;
+}
+
+Vector Particle::hr() const
+{
+    return mHr;
+}
+
+void Particle::setPosition(const Vector &pos)
+{
+    mPosition = pos;
+}
+
+void Particle::setMagnetic(const Vector &magnetic)
+{
+    mMagnetic = magnetic;
+}
+
+void Particle::setNormal(const Vector &normal)
+{
+    mNornal = normal;
+}
+
+void Particle::setHr(const Vector &hr)
+{
+    mHr = hr;
 }
     
 }
