@@ -1,4 +1,0 @@
-// the configured options and settings for Nano Magnetic Tool
-#define NANO_VERSION_MAJOR @NANO_VERSION_MAJOR@
-#define NANO_VERSION_MINOR @NANO_VERSION_MINOR@
-

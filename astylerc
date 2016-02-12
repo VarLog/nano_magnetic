@@ -1,10 +1,10 @@
-# 
+#
 # Artistic Style options file.
 # See <http://astyle.sourceforge.net/astyle.html> and `astyle -h` for more information.
 #
 
 # Brackets
---style=bsd
+--style=attach
 
 # Indent
 --indent=spaces=4
@@ -17,6 +17,7 @@
 
 # Indentation Options
 --indent-switches
+--indent-modifiers
 #--indent-preproc-block
 --indent-preproc-define
 --indent-col1-comments
@@ -34,7 +35,7 @@
 --add-brackets
 --convert-tabs
 --close-templates
---max-code-length=120
+--max-code-length=140
 --break-after-logical
 
 # Objective‑C Options
