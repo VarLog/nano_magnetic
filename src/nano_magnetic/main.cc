@@ -37,17 +37,17 @@
 int main( int argc, char **argv ) {
     namespace nm = nano_magnetic;
 
-
     constexpr auto kAnisotropy = 4000.;
     constexpr auto kSaturation = 800.;
     constexpr auto kRadius = 20.e-7;
 
-    auto material = nm::Material(kAnisotropy, kSaturation, kRadius);
-
-    auto particle = nm::Particle(material);
-
+    const auto kDamping = ( 20. * kAnisotropy ) / kSaturation;
 
     constexpr auto kGyromagneticRatio = 1.76e+7;
+
+    auto material = nm::Material( kAnisotropy, kSaturation, kDamping, kGyromagneticRatio, kRadius );
+
+    auto particle = nm::Particle( material );
 
 
     std::mt19937 mt_generator;
@@ -58,44 +58,35 @@ int main( int argc, char **argv ) {
 
     std::uniform_int_distribution<double> dis( 0., 1. );
 
-    auto field = nm::Vector( dis(mt_generator), dis(mt_generator), dis(mt_generator) );
+    auto field = nm::Vector( dis( mt_generator ), dis( mt_generator ), dis( mt_generator ) );
     field *= 100.;
-
 
     constexpr auto kDeltaT = 1.e-8;
     constexpr auto kEpsilon = 1.e-4;
 
-
-    particle.anisotropy = nm::Vector( dis(mt_generator), dis(mt_generator), dis(mt_generator) );
+    particle.anisotropy = nm::Vector( dis( mt_generator ), dis( mt_generator ), dis( mt_generator ) );
     particle.anisotropy.normalize();
 
     particle.magnetic = particle.anisotropy;
-    
 
     constexpr auto kMaxIterationCount = 50;
-    for(auto i = 0; i < kMaxIterationCount; ++i)
-    {
+
+    for( auto i = 0; i < kMaxIterationCount; ++i ) {
         particle.magnetic.normalize();
 
-        const auto kDamping = (20. * particle.material.anisotropy()) / particle.material.saturation();
-
-        auto field_effective_anisotropy = nm::Vector( - kDamping * particle.magnetic.x(),  - kDamping * particle.magnetic.y(), 0);
+        auto field_effective_anisotropy = nm::Vector( - kDamping * particle.magnetic.x(),  - kDamping * particle.magnetic.y(), 0 );
 
         auto field_effective = field_effective_anisotropy + field;
 
-        auto field_r = field_effective - field_effective.cross(particle.magnetic) * kDamping;
+
+        auto field_r = field_effective - field_effective.cross( particle.magnetic ) * kDamping;
 
         auto field_r_norm = field_r.norm();
 
         field_r.normalize();
 
-        auto dte = (kGyromagneticRatio * field_r_norm * kDeltaT) / ( 1. + std::pow(kDamping, 2.));
-
-        
-
+        auto dte = ( kGyromagneticRatio * field_r_norm * kDeltaT ) / ( 1. + std::pow( kDamping, 2. ) );
     }
-
-
 
     return EXIT_SUCCESS;
 }

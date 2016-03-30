@@ -34,16 +34,25 @@
 
 namespace nano_magnetic {
 
-struct Particle {
-
+class Particle {
+  public:
     template<typename M>
     Particle( M &&material ) :
-        material( std::forward<M>( material ) ) {
+        material_( std::forward<M>( material ) ) {
     }
 
-    Material material;
+    Material material() const {
+        return material_;
+    }
+
     Vector magnetic;
     Vector anisotropy;
+    Vector position;
+
+    double getVolume() const;
+
+  private:
+    Material material_;
 };
 
 }  // namespace nano_magnetic

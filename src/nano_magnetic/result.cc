@@ -1,6 +1,3 @@
-#ifndef _NANO_MAGNETIC_MATERIAL_H_
-#define _NANO_MAGNETIC_MATERIAL_H_
-
 //
 // The MIT License (MIT)
 //
@@ -24,55 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  material.h
+//  result.cc
 //
-//  Created by Maxim Fedorenko <varlllog@gmail.com> on 12/Feb/2016.
+//  Created by Maxim Fedorenko <varlllog@gmail.com> on 31/Mar/2016.
 //
 
-#include <nano_magnetic/types.h>
+#include "nano_magnetic/result.h"
 
 namespace nano_magnetic {
 
-class Material {
-
-  public:
-    Material( const double anisotropy, const double saturation, const double damp, const double gyro, const double radius ) :
-        anisotropy_( anisotropy ),
-        saturation_( saturation ),
-        damp_( damp ),
-        gyro_( gyro ),
-        radius_( radius ) {
-    }
-
-    double anisotropy() const {
-        return anisotropy_;
-    }
-
-    double saturation() const {
-        return saturation_;
-    }
-
-    double damp() const {
-        return damp_;
-    }
-
-    double gyro() const {
-        return gyro_;
-    }
-
-    double radius() const {
-        return radius_;
-    }
-
-  private:
-    double anisotropy_;
-    double saturation_;
-    double damp_;
-    double gyro_;
-    double radius_;
-
-};
-
 }  // namespace nano_magnetic
 
-#endif  // _NANO_MAGNETIC_MATERIAL_H_

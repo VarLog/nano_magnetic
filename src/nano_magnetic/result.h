@@ -1,5 +1,5 @@
-#ifndef _NANO_MAGNETIC_MATERIAL_H_
-#define _NANO_MAGNETIC_MATERIAL_H_
+#ifndef _NANO_MAGNETIC_RESULT_H_
+#define _NANO_MAGNETIC_RESULT_H_
 
 //
 // The MIT License (MIT)
@@ -24,55 +24,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//  material.h
+//  result.h
 //
-//  Created by Maxim Fedorenko <varlllog@gmail.com> on 12/Feb/2016.
+//  Created by Maxim Fedorenko <varlllog@gmail.com> on 31/Mar/2016.
 //
 
-#include <nano_magnetic/types.h>
+#include <nano_magnetic/chart.h>
+#include <nano_magnetic/material.h>
 
 namespace nano_magnetic {
 
-class Material {
-
+class Result {
   public:
-    Material( const double anisotropy, const double saturation, const double damp, const double gyro, const double radius ) :
-        anisotropy_( anisotropy ),
-        saturation_( saturation ),
-        damp_( damp ),
-        gyro_( gyro ),
-        radius_( radius ) {
+    template<typename M>
+    Result( M &&material, const unsigned int particleCount, const double density ) :
+        material_( std::forward<M>( material ) ),
+        particleCount_( particleCount ),
+        density_( density ) {
     }
 
-    double anisotropy() const {
-        return anisotropy_;
+    Material material() const {
+        return material_;
     }
 
-    double saturation() const {
-        return saturation_;
-    }
-
-    double damp() const {
-        return damp_;
-    }
-
-    double gyro() const {
-        return gyro_;
-    }
-
-    double radius() const {
-        return radius_;
-    }
+    Chart forward;
+    Chart backward;
 
   private:
-    double anisotropy_;
-    double saturation_;
-    double damp_;
-    double gyro_;
-    double radius_;
-
+    Material material_;
+    unsigned int particleCount_;
+    double density_;
 };
 
 }  // namespace nano_magnetic
 
-#endif  // _NANO_MAGNETIC_MATERIAL_H_
+#endif  // _NANO_MAGNETIC_RESULT_H_
