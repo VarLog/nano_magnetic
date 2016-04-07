@@ -74,12 +74,12 @@ int main( int argc, char **argv ) {
     for( auto i = 0; i < kMaxIterationCount; ++i ) {
         particle.magnetic.normalize();
 
-        auto field_effective_anisotropy = nm::Vector( - kDamping * particle.magnetic.x(),  - kDamping * particle.magnetic.y(), 0 );
+        auto field_effective_anisotropy = nm::Vector( -kDamping * particle.magnetic.x(), -kDamping * particle.magnetic.y(), 0 );
 
         auto field_effective = field_effective_anisotropy + field;
 
 
-        auto field_r = field_effective - field_effective.cross( particle.magnetic ) * kDamping;
+        auto field_r = nm::Vector( field_effective - field_effective.cross( particle.magnetic ) * kDamping );
 
         auto field_r_norm = field_r.norm();
 
